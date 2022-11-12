@@ -1,0 +1,33 @@
+@use '../../styles/Partials/mixins';
+.video{
+    //width: 100%;
+    @include mixins.tablet{
+        background: rgba($color: black, $alpha: 1.0);
+        width: 100%;
+        height: fit-content;
+        border-right: 2px solid blue;
+        border-left: 2px solid blue;
+    }
+    @include mixins.desktop{
+        background: rgba($color: black, $alpha: 1.0);
+        width: 100%;
+        height: fit-content;
+        border-right: 2px solid blue;
+        border-left: 2px solid blue;
+    }
+    
+    &__content{
+        width: 100%;
+        @include mixins.tablet{
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        @include mixins.desktop{
+            padding-left: 12rem;
+            padding-right: 12rem;
+        }
+        
+
+    }
+   
+}

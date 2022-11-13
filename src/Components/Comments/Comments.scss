@@ -1,0 +1,182 @@
+@use '../../styles/Partials/mixins';
+.form{
+    margin: 16px 0px 16px 0px;
+    //padding-bottom: 2rem;
+    //border-bottom: 2px solid #E1E1E1;
+    @include mixins.tablet{
+        margin: 16px 0rem 16px 0rem; 
+    }
+    @include mixins.desktop{
+        margin: 16px 0rem 2rem 0rem
+        
+          
+    }
+    &__title{
+        padding-bottom: 1rem;
+        font-weight: 700;
+    }
+    &__container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include mixins.desktop{
+            padding-right: 1rem;
+        }
+    }
+    &__subcontainer1{
+        display: flex;
+        flex-direction: column;
+        @include mixins.tablet{
+            flex-direction: row;
+        }
+        @include mixins.desktop{
+            flex-direction: row;
+            //height: 3rem;
+        }
+    }
+    &__subcontainer2{
+        display: flex;
+        flex-direction: column;
+        @include mixins.desktop{
+            padding-right: 2rem;
+        }
+    }
+    &__image{
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        margin-top: 1rem;
+        ::placeholder{
+            color: #E1E1E1;
+        }
+
+    }
+    &__input{
+        width: 15rem;
+        height: 5.3rem;
+        padding-left: 1rem;
+        color: #afafaf;
+        position: relative;
+        top: 0%;
+        background-color: #fafafa;
+        border-radius: 5px;
+        border: 1px solid #E1E1E1;
+        :active{
+            border: 2px solid blue;
+        }
+        :hover{
+            border: 2px solid blue;
+        }
+        @include mixins.tablet{
+            height: 2rem;
+            width: 30rem;
+        }
+        @include mixins.desktop{
+            height: 2.01rem;
+            width: 28rem;
+        }
+        
+    }
+    &__button{
+        width: 15rem;
+        height: 2rem;
+        background-color: #0095FF;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        //font-size: 700;
+        background-image: url('../../Assets/Icons/add_comment.svg');
+        background-repeat: no-repeat;
+        background-position-x: 0.5rem;
+        background-position-y: center;
+        @include mixins.tablet{
+            width: 10rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        @include mixins.desktop{
+            width: 10rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        &--container{
+            padding-top: 1rem;
+            @include mixins.tablet{
+                padding-left: 1rem;
+            }
+        }
+        
+    }
+    &__label{
+        color: #afafaf;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+}
+
+
+.comments{
+    &__container{
+        margin-top: 1rem;
+        border-top: 2px #E1E1E1 solid;
+        @include mixins.tablet{
+           
+        }
+        @include mixins.desktop{
+           
+        }
+    }
+    &__subcontainer1{
+        display: flex;
+    }
+    &__subcontainer2{
+        display: flex;
+        flex-direction: column;
+        padding-left: 1rem;
+        padding-top: 1rem;
+        width: 100%;
+        @include mixins.desktop{
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+    &__subcontainer3{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        padding-bottom: 0.5rem;
+    }
+    &__image{
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;  
+        margin-top: 1rem; 
+        background-color: #E1E1E1;
+        @include mixins.tablet{
+          
+        }
+        @include mixins.desktop{
+           
+        }
+    }
+    &__title{
+        font-weight: 700;
+    }
+    &__date{
+        color: #afafaf;
+    }
+    &__text{
+        font-size: 1rem;
+        @include mixins.tablet{
+            font-size: 0.92rem;
+            line-height: 1.5rem;
+
+        }
+        @include mixins.desktop{
+            line-height: 1.5rem;
+            font-weight: 500;
+        }
+    }
+}

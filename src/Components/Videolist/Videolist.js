@@ -1,6 +1,6 @@
 import './Videolist.scss'
-import videos from '../../data/videos.json'
-import videosdetails from '../../data/video-details.json'
+//import videos from '../../data/videos.json'
+//import videosdetails from '../../data/video-details.json'
 
 //pass onclick handler on each video that uses video ID and pass ID to App.js
 //
@@ -12,7 +12,7 @@ function Videolist(props){
             <p className='videos__title'>NEXT VIDEOS</p>
             {
                 //use props.videos and remove import videos
-                videosdetails.map(video =>{
+                props.videolist.map(video =>{
                     return(
                         <div className='videos__container' onClick={()=> props.handleClickVideo(video)}>
                             <div className='videos__image-container'>

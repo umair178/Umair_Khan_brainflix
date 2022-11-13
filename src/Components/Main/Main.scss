@@ -4,24 +4,61 @@
 }
 .main{
     width: 100%;
+    padding: 16px 0px 0px 0px;
+
+    @include mixins.tablet{
+        padding: 16px 0rem 2rem 0rem;
+    }
+    @include mixins.desktop{
+        padding: 16px 0rem 2rem 0rem;
+    }
     &__title{
-        border-bottom: 3px solid #E1E1E1;
+        border-bottom: 2px solid #E1E1E1;
+        padding-bottom: 1rem;
+        @include mixins.tablet{
+            padding-top: 2rem;
+            padding-bottom: 0rem;
+            border-bottom: 0rem;
+            font-size: 2rem;
+        }
+        @include mixins.desktop{
+            padding-top: 2rem;
+            padding-bottom: 0rem;
+            border-bottom: 0rem;
+            font-size: 2rem;
+        }
     }
     &__container{
         display: flex;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
-        border-bottom: 1px solid #afafaf;
+        border-bottom: 2px solid #E1E1E1;
+        padding-top: 1rem;
+        //padding-right: 2.5rem;
+        @include mixins.tablet{
+            font-size: 0.8rem;
+        }
+        @include mixins.desktop{
+            font-size: 0.8rem;
+            padding-right: 1rem;
+        }
     }
     &__subcontainer1{
         display: flex;
         flex-direction: column;
+        @include mixins.tablet{
+            flex-direction: row;
+        }
+        @include mixins.desktop{
+            flex-direction: row;
+        }
     }
     &__subcontainer2{
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        padding-bottom: 1rem;
     }
     &__subcontainer3{
         display: flex;
@@ -31,11 +68,49 @@
     &__views{
         &--count{
             color: #afafaf;
+            padding-left: 0.5rem;
+            padding-right: 2rem;
         }
     }
     &__likes{
         &--count{
             color: #afafaf;
+            padding-left: 0.5rem;
+            @include mixins.tablet{
+                padding-left: 1rem;
+            }
+            @include mixins.tablet{
+                padding-left: 1rem;
+            }
+        }
+    }
+    &__channel{
+        font-weight: 700;
+        font-size: 0.8rem;
+        padding-bottom: 1rem;
+    }
+    &__date{
+        color: #afafaf;
+        @include mixins.tablet{
+            padding-left: 1rem;
+        }
+        @include mixins.desktop{
+            padding-left: 1rem;
+        }
+    }
+    &__description{
+        font-size: 0.85rem;
+        line-height: 1.1rem;
+        color: #323232;
+        padding-top: 1rem;
+        @include mixins.tablet{
+            font-size: 0.9rem;
+            line-height: 1.5rem;
+        }
+        @include mixins.desktop{
+            font-size: 0.9rem;
+            line-height: 1.5rem;
+            padding-right: 1rem;
         }
     }
 }

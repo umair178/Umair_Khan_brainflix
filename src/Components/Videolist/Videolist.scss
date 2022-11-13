@@ -3,38 +3,60 @@
     font-family:sans-serif;
 }
 .videos{
-    margin-left: 16px;
-    margin-right: 16px;
+    border-top: 2px solid #e1e1e1;
+    padding-top: 1rem;
+
+    @include mixins.desktop{
+        border-top: none;
+        padding-top: 0rem;
+    }
     &__title{
         color: #afafaf;
         font-size: 0.8rem;
         padding-bottom: 1rem;
+        font-weight: 700;
+        @include mixins.desktop{
+            padding-bottom: 1.5rem;
+        }
     }
     &__container{
         display: flex;
         flex-direction: row;
         padding-bottom: 1rem;
+        @include mixins.desktop{
+            width: 19rem;
+            padding-bottom: 1.5rem;
+        }
     }
     &__image-container{
         width: fit-content;
         height: 3rem;
         background-color: #e1e1e1;
+        @include mixins.desktop{
+            height: 4rem;
+        }
 
     }
     &__image{
         width: 6rem;
         height: 3rem;
         border-radius: 4px;
+        @include mixins.desktop{
+            height: 4rem;
+        }
         
     }
     &__subcontainer1{
         display: flex;
         flex-direction: column;
         padding-left: 1rem;
+        @include mixins.tablet{
+            width: 12rem;
+        }
 
     }
     &__subtitle{
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         font-weight: bold;
         color: #323232;
     }

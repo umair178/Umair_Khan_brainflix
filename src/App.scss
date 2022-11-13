@@ -1,3 +1,4 @@
+@use './styles/Partials/mixins';
 /* Box-sizing border-box */
 * {
     -moz-box-sizing: border-box;
@@ -8,6 +9,37 @@
 body {
     margin: 0px;
     font-family: sans-serif;
+}
+.brainflix{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 16px 0px 16px;
+    width: fit-content;
+    @include mixins.desktop{
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0px 7rem 0rem 7rem 
+        
+    }
+    @include mixins.tablet{
+        margin: 0px 2rem 0px 2rem;
+    }
+    &__subcontainer1{
+        @include mixins.tablet{
+    }
+        @include mixins.desktop{
+            
+    }
+
+    }
+    &__subcontainer2{
+        @include mixins.desktop{
+            padding-left: 1rem;
+            padding-top: 3rem;
+            border-left: 2px solid #e1e1e1         
+    }
+
+    }
 }
 
 

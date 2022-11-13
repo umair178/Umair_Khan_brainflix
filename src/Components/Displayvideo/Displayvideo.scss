@@ -1,19 +1,18 @@
 @use '../../styles/Partials/mixins';
 .video{
-    //width: 100%;
+    border-right: 1px solid blue;
+    border-left: 1px solid blue;
     @include mixins.tablet{
         background: rgba($color: black, $alpha: 1.0);
         width: 100%;
         height: fit-content;
-        border-right: 2px solid blue;
-        border-left: 2px solid blue;
+        
     }
     @include mixins.desktop{
         background: rgba($color: black, $alpha: 1.0);
         width: 100%;
         height: fit-content;
-        border-right: 2px solid blue;
-        border-left: 2px solid blue;
+        
     }
     
     &__content{

@@ -1,9 +1,7 @@
 import './Videolist.scss'
 
 function Videolist(props){
-    if (!props.videolist){
-        return(<p>loading videos....</p>)
-    }
+    
     return(
         <div className='videos'>
             <p className='videos__title'>NEXT VIDEOS</p>

@@ -1,9 +1,11 @@
 import './Comments.scss'
 import img1 from '../../Assets/Images/Mohan-muruge.jpg'
-//import videosdetails from '../../data/video-details.json'
 
 
 function Comments(props){
+    if (!props.commentlist){
+        return(<p>loading Comments....</p>)
+    }
     return(
         <div className='form'>
             <p className='form__title'>{props.commentlist.length} Comments</p>
@@ -31,14 +33,14 @@ function Comments(props){
             {
                 props.commentlist.map(comment =>{
                     return(
-                        <div className='comments'>
+                        <div className='comments' key={Math.random()}>
                             <div className="comments__container"> 
                                 <div className="comments__subcontainer1">
                                     <img className="comments__image" src="" alt=""></img>
                                         <div className="comments__subcontainer2"> 
                                         <div className="comments__subcontainer3">  
                                             <p className="comments__title" id="title">{comment.name}</p>
-                                            <p className="comments__date"  id="date">7/11/22</p>                  
+                                            <p className="comments__date"  id="date">{new Date(comment.timestamp).toLocaleDateString()}</p>                  
                                         </div>
                                             <p className="comments__text" id="text">{comment.comment}</p> 
                                     </div>

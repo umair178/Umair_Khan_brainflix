@@ -31,8 +31,8 @@ function Home() {
             .then(response => {
                 setvideoList(response.data)
                 console.log('video list is',videoList)
-                setDisplayList(videoList.filter((video) =>{
-                    return video !==videoList[0]
+                setDisplayList(response.data.filter((video) =>{
+                    return video !==response.data[0]
                 }))
                 console.log(displayList)
             })

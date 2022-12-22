@@ -30,12 +30,10 @@ function Home() {
         // https://project-2-api.herokuapp.com/videos?api_key=${apiKey}
         axios.get(`http://localhost:8080/videos`)
             .then(response => {
-                setvideoList(response.data)
-                console.log('video list is',videoList)
-                setDisplayList(response.data.filter((video) =>{
-                    return video !==response.data[0]
-                }))
-                console.log(displayList)
+                const [displayVideo, ...listedVideos] = response.data;
+                setvideoList(response.data);
+                setDisplayList(listedVideos);
+                // setActiveVideo(displayVideo);
             })
             .catch(e=>{
                 console.log('video list error is', e)
@@ -52,13 +50,13 @@ function Home() {
             .catch(e=>{
                 console.log("active video error is", e)
             })
-    }, [ videoId]);
+    }, [videoId]);
             
-    const handleClickVideo = (video) => {
-        navigate (`/videos/${video.id}`)
-        setDisplayList(videoList.filter((obj)=>{
-            return obj !==video
-        }))
+    const handleClickVideo = (selectedVideo) => {
+        navigate (`/videos/${selectedVideo.id}`);
+        setDisplayList(videoList.filter((video)=>{
+            return video.id !== selectedVideo.id;
+        }));
     };
     return (
         <>

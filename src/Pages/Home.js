@@ -27,7 +27,8 @@ function Home() {
             })
     }, []);
     useEffect(() => {
-        axios.get(`https://project-2-api.herokuapp.com/videos?api_key=${apiKey}`)
+        // https://project-2-api.herokuapp.com/videos?api_key=${apiKey}
+        axios.get(`http://localhost:8080/videos`)
             .then(response => {
                 setvideoList(response.data)
                 console.log('video list is',videoList)
@@ -42,7 +43,8 @@ function Home() {
     }, [apiKey]);
 
     useEffect(() => {
-        axios.get(`https://project-2-api.herokuapp.com/videos/${videoId}?api_key=${apiKey}`)
+        // https://project-2-api.herokuapp.com/videos/${videoId}?api_key=${apiKey}
+        axios.get(`http://localhost:8080/videos/${videoId}`)
             .then(response => {
                 setActiveVideo(response.data)
                 console.log('active video is', activeVideo)

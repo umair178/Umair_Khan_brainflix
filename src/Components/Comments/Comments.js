@@ -1,8 +1,13 @@
 import './Comments.scss'
 import img1 from '../../Assets/Images/Mohan-muruge.jpg'
+import img2 from '../../Assets/Icons/delete-icon.svg'
+import { useParams } from 'react-router-dom';
+import {useRef} from 'react'
 
 
 function Comments(props){
+    const formRef = useRef();
+    const {videoId} = useParams();
     if (!props.commentlist){
         return(<p>loading Comments....</p>)
     }
@@ -14,17 +19,19 @@ function Comments(props){
                     <img className='form__image' src={img1}></img>
                 </div>
                 <div className='form__subcontainer1'>
+                    <form id='form' ref={props.formRef} onSubmit={props.handleaddcomment}>
                     <div>
-                        <form className='form__subcontainer2'>
+                        <div className='form__subcontainer2' >
                             <label for='comment' className='form__label'>
                                 JOIN THE CONVERSATION
                             </label>
-                            <input className='form__input' type='text'  name='comment' value='' placeholder='Add a new comment'></input>
-                        </form>
+                            <input className='form__input' type='text'  name='comment' placeholder='Add a new comment'></input>
+                        </div>
                     </div>
                     <div className='form__button--container'>
                         <button className='form__button'>COMMENT</button>
                     </div>
+                    </form>
                 </div>
             </div>
 
@@ -42,7 +49,13 @@ function Comments(props){
                                             <p className="comments__title" id="title">{comment.name}</p>
                                             <p className="comments__date"  id="date">{new Date(comment.timestamp).toLocaleDateString()}</p>                  
                                         </div>
-                                            <p className="comments__text" id="text">{comment.comment}</p> 
+                                        <div className='comments__subcontainer3'>
+                                            <p className="comments__text" id="text">{comment.comment}</p>
+                                            <form onSubmit={props.deletecomment}>
+                                                <button>Delete</button>
+                                            </form>
+                                            {/* <img className='comments__image' src={img2}></img> */}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

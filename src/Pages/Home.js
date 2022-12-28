@@ -6,15 +6,19 @@ import Video_list from "../Components/Videolist/Videolist";
 import { useState, useEffect } from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
 import axios from "axios";
+import {useRef} from 'react';
 
 function Home() {
     const navigate = useNavigate();
     const url = 'https://project-2-api.herokuapp.com'
     const {videoId} = useParams();
+    const formRef = useRef();
     // const [apiKey, setApiKey] = useState('');
     const [videoList, setvideoList] = useState([]);
     const [activeVideo, setActiveVideo] = useState([]);
     const [displayList, setDisplayList] = useState([]);
+    const [commentList, setCommentList] = useState([]);
+
 
     // useEffect(() => {
     //     axios.get('https://project-2-api.herokuapp.com/register')
@@ -47,6 +51,7 @@ function Home() {
         axios.get(`http://localhost:8080/videos/${videoId}`)
             .then(response => {
                 setActiveVideo(response.data)
+                setCommentList(response.data.comments)
                 console.log('active video is', activeVideo)
             })
             .catch(e=>{
@@ -60,6 +65,28 @@ function Home() {
             return obj !==video
         }))
     };
+    const handleaddcomment = (e)=>{
+        e.preventDefault()
+        console.log('clicked')
+        const new_comment = {
+            comment: formRef.current.comment.value
+        }
+        console.log(new_comment)
+        document.getElementById('form').reset()
+        axios.post(`http://localhost:8080/videos/${videoId}`, new_comment).then(response=>{
+            console.log(response)
+            axios.get(`http://localhost:8080/videos/${videoId}`).then(response=>{
+                setCommentList(response.data.comments)
+            })
+
+        })
+    };
+    const deletecomment = (e, comment)=>{
+        e.preventDefault()
+        console.log(comment)
+
+    };
+
     return (
         <>
             {!activeVideo && <p>Loading page....</p>}
@@ -69,7 +96,7 @@ function Home() {
                     <div className='brainflix'>
                         <div className='brainflix__subcontainer1'>
                             <Main title={activeVideo.title} channel={activeVideo.channel} timestamp={activeVideo.timestamp} views={activeVideo.views} likes={activeVideo.likes} description={activeVideo.description} />
-                            <Comments commentlist={activeVideo.comments} />
+                            <Comments deletecomment={deletecomment} handleaddcomment={handleaddcomment} commentlist={commentList} formRef={formRef}/>
                         </div>
                         <div className='brainflix__subcontainer2'>
                             <Video_list handleClickVideo={handleClickVideo} videolist={displayList} />

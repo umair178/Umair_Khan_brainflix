@@ -51,7 +51,7 @@ function Comments(props){
                                         </div>
                                         <div className='comments__subcontainer3'>
                                             <p className="comments__text" id="text">{comment.comment}</p>
-                                            <form onSubmit={props.deletecomment}>
+                                            <form onClick={(e)=>props.deletecomment(e, comment)}>
                                                 <button>Delete</button>
                                             </form>
                                             {/* <img className='comments__image' src={img2}></img> */}

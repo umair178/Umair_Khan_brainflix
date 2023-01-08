@@ -117,6 +117,8 @@
 
 
 .comments{
+    @include mixins.desktop{
+    }
     &__container{
         margin-top: 1rem;
         border-top: 2px #E1E1E1 solid;
@@ -124,6 +126,7 @@
            
         }
         @include mixins.desktop{
+            width: 100%;
            
         }
     }

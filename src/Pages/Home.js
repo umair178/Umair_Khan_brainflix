@@ -1,4 +1,4 @@
-
+import './Home.scss';
 import Displayvideo from "../Components/Displayvideo/Displayvideo"
 import Main from "../Components/Main/Main";
 import Comments from "../Components/Comments/Comments";
@@ -13,25 +13,12 @@ function Home() {
     const url = 'https://project-2-api.herokuapp.com'
     const {videoId} = useParams();
     const formRef = useRef();
-    // const [apiKey, setApiKey] = useState('');
     const [videoList, setvideoList] = useState([]);
     const [activeVideo, setActiveVideo] = useState([]);
     const [displayList, setDisplayList] = useState([]);
     const [commentList, setCommentList] = useState([]);
 
-
-    // useEffect(() => {
-    //     axios.get('https://project-2-api.herokuapp.com/register')
-    //         .then(response => {
-    //             setApiKey(response.data)
-    //             console.log('apikey is',apiKey)
-    //         })
-    //         .catch(e=>{
-    //             console.log('apikey error is', e)
-    //         })
-    // }, []);
     useEffect(() => {
-        // https://project-2-api.herokuapp.com/videos?api_key=${apiKey}
         axios.get(`http://localhost:8080/videos`)
             .then(response => {
                 setvideoList(response.data)
@@ -47,7 +34,6 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        // https://project-2-api.herokuapp.com/videos/${videoId}?api_key=${apiKey}
         axios.get(`http://localhost:8080/videos/${videoId}`)
             .then(response => {
                 setActiveVideo(response.data)
@@ -67,11 +53,9 @@ function Home() {
     };
     const handleaddcomment = (e)=>{
         e.preventDefault()
-        console.log('clicked')
         const new_comment = {
             comment: formRef.current.comment.value
         }
-        console.log(new_comment)
         document.getElementById('form').reset()
         axios.post(`http://localhost:8080/videos/${videoId}`, new_comment).then(response=>{
             console.log(response)
@@ -81,10 +65,14 @@ function Home() {
 
         })
     };
-    const deletecomment = (e, comment)=>{
-        e.preventDefault()
-        console.log(comment)
-
+    const deletecomment = (e, id)=>{
+        e.preventDefault();
+        axios.delete(`http://localhost:8080/videos/${videoId}`, {data:{id:id}}).then((response) =>{
+            console.log(response)
+            axios.get(`http://localhost:8080/videos/${videoId}`).then(response=>{
+                setCommentList(response.data.comments)
+            })
+        })
     };
 
     return (
